@@ -36,6 +36,8 @@ const PodcastPlayer = (props) => {
     setIsPlaying(!isPlaying);
   };
 
+  useEffect(() => setIsPlaying(true), [episode]);
+
   const icon = isPlaying ? (
     <PauseCircleFilledIcon className={classes.playPause} />
   ) : (
