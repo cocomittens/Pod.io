@@ -39,12 +39,12 @@ const useStyles = makeStyles({
   unselected: {
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: "#edeef7",
+      backgroundColor: "#e4fbff",
     },
   },
   selected: {
     cursor: "pointer",
-    backgroundColor: "#edeef7",
+    backgroundColor: "#e4fbff",
   },
   back: {
     "&:hover": {
@@ -54,18 +54,15 @@ const useStyles = makeStyles({
     fontSize: "60px",
     position: "fixed",
     padding: "1vh",
+    color: "#7868e6",
   },
   body: {
+    background: "linear-gradient(45deg, #edeef7 30%, #fff 90%)",
     paddingBottom: "10vh",
   },
   img: {
     width: "100%",
     borderRadius: "5px",
-
-    "&:hover": {
-      cursor: "pointer",
-      opacity: ".8",
-    },
   },
   podcastInfo: { paddingTop: "1vh" },
   description: {
@@ -80,6 +77,16 @@ const useStyles = makeStyles({
     "&:hover": {
       cursor: "default",
     },
+  },
+  expandButton: {
+    color: "#7868e6",
+  },
+  open: {
+    border: "1px solid #edeef7",
+  },
+  closed: {
+    padding: 0,
+    border: "none",
   },
 });
 const EpisodeList = (props) => {
@@ -124,11 +131,13 @@ const EpisodeList = (props) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>
+            <TableCell variant="head" align="center">
               <Typography variant="h6">Title</Typography>
             </TableCell>
-
-            <TableCell>
+            <TableCell variant="head" align="center">
+              <Typography variant="h6">Length</Typography>
+            </TableCell>
+            <TableCell variant="head" align="center">
               <Typography variant="h6">Date</Typography>
             </TableCell>
             <TableCell />
@@ -144,21 +153,27 @@ const EpisodeList = (props) => {
                 onClick={() => handleClick(episode, index)}
                 key={index}
               >
-                <TableCell>
+                <TableCell align="center" size="small">
                   <Typography variant="body1">{episode.title}</Typography>
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">
+                  <Typography variant="body1">
+                    {episode.attachments[0].duration_in_seconds}
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
                   <Typography variant="body1">
                     {new Date(episode.date_published).getMonth()}-
                     {new Date(episode.date_published).getDate()}-
                     {new Date(episode.date_published).getFullYear()}
                   </Typography>
                 </TableCell>
-                <TableCell>
+                <TableCell align="right">
                   <IconButton
                     aria-label="expand row"
                     size="small"
                     onClick={() => setOpen(open >= 0 ? -1 : index)}
+                    className={classes.expandButton}
                   >
                     {open === index ? (
                       <KeyboardArrowUpIcon />
@@ -170,7 +185,7 @@ const EpisodeList = (props) => {
               </TableRow>
               <TableRow>
                 <TableCell
-                  style={{ paddingBottom: 0, paddingTop: 0 }}
+                  className={open === index ? classes.open : classes.closed}
                   colSpan={12}
                 >
                   <Collapse in={open === index} timeout="auto" unmountOnExit>
