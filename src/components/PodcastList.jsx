@@ -35,6 +35,15 @@ const useStyles = makeStyles({
       cursor: "default",
     },
   },
+  search: { margin: "1vh 0", background: "#fff" },
+  subheader: {
+    fontFamily: "raleway",
+    fontWeight: 600,
+    color: "#b8b5ff",
+    "&:hover": {
+      cursor: "default",
+    },
+  },
 });
 const PodcastList = (props) => {
   const classes = useStyles();
@@ -81,6 +90,7 @@ const PodcastList = (props) => {
         value={search}
         renderInput={(params) => (
           <TextField
+            className={classes.search}
             {...params}
             autoFocus={search}
             label="Search Podcasts..."
@@ -103,7 +113,7 @@ const PodcastList = (props) => {
           <SearchPodcasts />
         </Grid>
         <Grid item xs={12}>
-          <Typography gutterBottom className={classes.header} variant="h2">
+          <Typography gutterBottom className={classes.subheader} variant="h3">
             Featured
           </Typography>
         </Grid>

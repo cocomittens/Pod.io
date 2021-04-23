@@ -7,6 +7,10 @@ const urls = [
   "https://feeds.npr.org/510317/feed.json",
   "https://feeds.npr.org/510315/feed.json",
   "https://feeds.npr.org/510310/feed.json",
+  "https://feeds.npr.org/510310/feed.json",
+  "https://feeds.npr.org/510351/feed.json",
+  "https://feeds.npr.org/510318/feed.json",
+  "https://feeds.npr.org/510311/feed.json",
 ];
 
 export default urls;

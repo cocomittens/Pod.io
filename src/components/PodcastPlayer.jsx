@@ -9,8 +9,7 @@ import { setEpisodeList } from "../actions/displayType";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "#7868e6",
-
+    background: "linear-gradient(45deg, #7868e6 30%, #b8b5ff 90%)",
     width: "100vw",
     position: "fixed",
     bottom: "0",

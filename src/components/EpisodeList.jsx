@@ -67,11 +67,19 @@ const useStyles = makeStyles({
       opacity: ".8",
     },
   },
-  podcastInfo: {},
+  podcastInfo: { paddingTop: "1vh" },
   description: {
     marginTop: "2vh",
     maxHeight: "20vh",
     overflow: "auto",
+  },
+  header: {
+    fontFamily: "raleway",
+    fontWeight: "bold",
+    color: "#111",
+    "&:hover": {
+      cursor: "default",
+    },
   },
 });
 const EpisodeList = (props) => {
@@ -99,7 +107,7 @@ const EpisodeList = (props) => {
         className={classes.podcastInfo}
       >
         <Grid item>
-          <Typography variant="h2" gutterBottom>
+          <Typography className={classes.header} variant="h2" gutterBottom>
             {podcast.title}
           </Typography>
         </Grid>

@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   background: {
-    backgroundColor: "#edeef7",
+    background: "linear-gradient(45deg, #edeef7 30%, #fff 90%)",
   },
 });
 const ListDisplay = () => {
@@ -27,7 +27,7 @@ const ListDisplay = () => {
     return <PodcastList />;
   };
   return (
-    <Grid container>
+    <Grid container className={classes.background}>
       <Grid item xs={12}>
         {renderDisplay()}
       </Grid>
