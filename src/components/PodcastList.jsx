@@ -129,7 +129,6 @@ const PodcastList = (props) => {
           .map((podcast, index) => {
             return (
               <Grid
-                container
                 item
                 key={index}
                 xs={12}
@@ -138,19 +137,13 @@ const PodcastList = (props) => {
                 lg={2}
                 justify="center"
                 alignContent="flex-start"
+                onClick={() => handleClick(podcast)}
               >
-                <Grid item onClick={() => handleClick(podcast)}>
-                  <img
-                    className={classes.img}
-                    src={podcast.icon}
-                    alt={podcast.title}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6" className={classes.title}>
-                    {podcast.title}
-                  </Typography>
-                </Grid>
+                <img
+                  className={classes.img}
+                  src={podcast.icon}
+                  alt={podcast.title}
+                />
               </Grid>
             );
           })}
