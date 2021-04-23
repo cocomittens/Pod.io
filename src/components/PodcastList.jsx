@@ -19,6 +19,9 @@ const useStyles = makeStyles({
     margin: "0",
     padding: "0 1vw",
   },
+  background: {
+    backgroundColor: "#edeef7",
+  },
 });
 const PodcastList = (props) => {
   const classes = useStyles();

@@ -6,13 +6,20 @@ import EpisodeList from "./EpisodeList";
 import PodcastList from "./PodcastList";
 import PodcastPlayer from "./PodcastPlayer";
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 
+const useStyles = makeStyles({
+  background: {
+    backgroundColor: "#edeef7",
+  },
+});
 const ListDisplay = () => {
+  const classes = useStyles();
   const episodes = useSelector((state) => state.episodeList);
   const displayType = useSelector((state) => state.displayType);
+
   const renderDisplay = () => {
-    console.log(displayType);
     switch (displayType) {
       case PODCASTS:
         return <PodcastList />;
@@ -24,8 +31,10 @@ const ListDisplay = () => {
   };
   return (
     <Grid container>
-      <Grid item>{renderDisplay()}</Grid>
-      <Grid item>
+      <Grid item xs={12}>
+        {renderDisplay()}
+      </Grid>
+      <Grid item xs={12}>
         <PodcastPlayer />
       </Grid>
     </Grid>
