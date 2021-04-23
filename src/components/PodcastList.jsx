@@ -110,7 +110,7 @@ const PodcastList = (props) => {
             Pod.io
           </Typography>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={10}>
           <SearchPodcasts />
         </Grid>
         <Grid item xs={12}>
