@@ -89,11 +89,11 @@ const PodcastList = (props) => {
             Pod.io
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={8}>
           <SearchPodcasts />
         </Grid>
         <Grid item xs={12}>
-          <Typography className={classes.header} variant="h2">
+          <Typography gutterBottom className={classes.header} variant="h2">
             Featured
           </Typography>
         </Grid>
