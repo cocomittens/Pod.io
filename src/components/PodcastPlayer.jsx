@@ -27,7 +27,6 @@ const useStyles = makeStyles({
 
 const PodcastPlayer = (props) => {
   const { episode } = props;
-  console.log(episode);
   const classes = useStyles();
 
   const [isPlaying, setIsPlaying] = useState(episode !== null);

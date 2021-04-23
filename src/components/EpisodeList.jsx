@@ -38,6 +38,7 @@ const useStyles = makeStyles({
     },
   },
   unselected: {
+    boxShadow: " 0px 1px 2px 2px rgba(200,200,200,.15)",
     "&:hover": {
       cursor: "pointer",
       backgroundColor: "#b8b5ff",
@@ -62,6 +63,8 @@ const useStyles = makeStyles({
     paddingBottom: "10vh",
   },
   img: {
+    marginTop: "2vh",
+    marginBottom: "1vh",
     width: "100%",
     borderRadius: "5px",
     boxShadow:
@@ -72,11 +75,22 @@ const useStyles = makeStyles({
     marginTop: "2vh",
     maxHeight: "20vh",
     overflow: "auto",
+    paddingRight: "8px",
   },
+
   header: {
     fontFamily: "raleway",
     fontWeight: "bold",
     color: "#7868e6",
+    "&:hover": {
+      cursor: "default",
+    },
+  },
+  subheader: {
+    marginTop: "1vh",
+    fontFamily: "raleway",
+    fontWeight: 600,
+    color: "#b8b5ff",
     "&:hover": {
       cursor: "default",
     },
@@ -92,9 +106,8 @@ const useStyles = makeStyles({
     padding: 0,
     border: "none",
   },
-
   tableCell: {
-    borderBottom: "1px solid #111",
+    borderBottom: "1px solid #666",
   },
 });
 const EpisodeList = (props) => {
@@ -122,7 +135,7 @@ const EpisodeList = (props) => {
         className={classes.podcastInfo}
       >
         <Grid item>
-          <Typography className={classes.header} variant="h2" gutterBottom>
+          <Typography className={classes.header} variant="h2">
             {podcast.title}
           </Typography>
         </Grid>
@@ -130,8 +143,23 @@ const EpisodeList = (props) => {
           <img className={classes.img} src={podcast.icon} alt={podcast.title} />
         </Grid>
         <Grid item xs={10} lg={6}>
-          <Typography className={classes.description} variant="subtitle1">
+          <Typography className={classes.subheader} variant="h4">
+            Description
+          </Typography>
+        </Grid>
+        <Grid item xs={10} lg={6}>
+          <Typography
+            gutterBottom
+            className={classes.description}
+            variant="subtitle1"
+            align="center"
+          >
             {podcast.description}
+          </Typography>
+        </Grid>
+        <Grid item xs={10} lg={6}>
+          <Typography gutterBottom className={classes.subheader} variant="h4">
+            Episodes
           </Typography>
         </Grid>
       </Grid>
