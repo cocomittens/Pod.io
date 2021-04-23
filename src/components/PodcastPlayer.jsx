@@ -28,6 +28,7 @@ const PodcastPlayer = (props) => {
   const classes = useStyles();
 
   const [isPlaying, setIsPlaying] = useState(episode !== null);
+  const [player, setPlayer] = useState(null);
 
   useEffect(() => {
     if (episode) setIsPlaying(true);
@@ -55,7 +56,11 @@ const PodcastPlayer = (props) => {
       <Grid item onClick={handlePlayButtonClick}>
         {icon}
       </Grid>
-      <ReactHowler src={getAudio} playing={isPlaying} />
+      <ReactHowler
+        src={getAudio}
+        playing={isPlaying}
+        ref={(ref) => setPlayer(ref)}
+      />
     </Grid>
   );
 };
