@@ -1,16 +1,11 @@
-import {
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React, { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import PodcastPlayer from "./PodcastPlayer";
 import { fetchPodcast } from "../utils/utils";
 import { makeStyles } from "@material-ui/core/styles";
+import { setEpisodeList } from "../actions/episodeList";
 import urls from "../utils/urls";
 
 const useStyles = makeStyles({
@@ -19,12 +14,14 @@ const useStyles = makeStyles({
     borderRadius: "5px",
   },
   podcasts: {
-    margin: "0 5vw",
+    width: "100%",
+    margin: "0",
+    padding: "0 1vw",
   },
 });
-const PodcastList = () => {
+const PodcastList = (props) => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const getData = useCallback((url) => {
     fetchPodcast(url).then(function (response) {
@@ -34,13 +31,21 @@ const PodcastList = () => {
 
   useEffect(() => {
     setData([]);
+  }, [dispatch]);
+
+  useEffect(() => {
     const podcastUrls = Object.entries(urls).map((url) => url[1]);
     podcastUrls.forEach((url) => getData(url));
   }, [getData]);
 
+  const handleClick = (podcast) => {
+    dispatch(setEpisodeList(podcast.items));
+    props.history.push("/episodes");
+  };
+
   return (
     <div className="App">
-      <Grid container spacing={3} justify="space-between">
+      <Grid container className={classes.podcasts} spacing={2} justify="center">
         <Grid item xs={12}>
           <Typography variant="h1">Pod.io</Typography>
         </Grid>
@@ -57,7 +62,7 @@ const PodcastList = () => {
               justify="center"
               alignContent="flex-start"
             >
-              <Grid item>
+              <Grid item onClick={() => handleClick(podcast)}>
                 <img
                   className={classes.img}
                   src={podcast.icon}
@@ -71,6 +76,7 @@ const PodcastList = () => {
           );
         })}
       </Grid>
+      <PodcastPlayer />
     </div>
   );
 };

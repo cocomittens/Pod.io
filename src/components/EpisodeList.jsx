@@ -1,33 +1,24 @@
 import {
-  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@material-ui/core";
+import { useDispatch, useSelector } from "react-redux";
 
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  img: {
-    width: "100%",
-    height: "5vh",
-    objectFit: "cover",
-    borderRadius: "5px",
-  },
-});
 
 const EpisodeList = () => {
+  const episodes = useSelector((state) => state.episodeList);
+  console.log(episodes);
   return (
-    <List component="nav" aria-label="main mailbox folders">
-      <ListItem button>
-        <ListItemText primary="Inbox" />
-      </ListItem>
-      <ListItem button>
-        <ListItemText primary="Drafts" />
-      </ListItem>
+    <List>
+      {episodes.map((episode) => (
+        <ListItem button>
+          <ListItemText primary={episode.title} />
+        </ListItem>
+      ))}
     </List>
   );
 };

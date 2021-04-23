@@ -2,9 +2,10 @@ import { SET_EPISODE_LIST } from "../actions/episodeList";
 
 const episodeListReducer = (state = [], action) => {
   Object.freeze(state);
+  console.log(action.type, action.list);
   switch (action.type) {
     case SET_EPISODE_LIST:
-      return Object.assign({}, action.list);
+      return [...action.list];
     default:
       return state;
   }
