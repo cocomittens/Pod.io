@@ -15,7 +15,10 @@ http://pod-io.herokuapp.com
 When first viewing the app, the user will be presented with a list of all available podcasts they can listen to.
 
 ### Search
+<img width="1279" alt="search" src="https://user-images.githubusercontent.com/2096314/115932290-81a78100-a441-11eb-9e23-f34639665899.png">
 The user can search for a podcast.
+<img width="1277" alt="searchresults" src="https://user-images.githubusercontent.com/2096314/115932383-b0255c00-a441-11eb-8e99-c49616659da5.png">
+After the user selects a podcast, the podcast will appear. The user can clear the selection and display all available podcasts by clicking the "x" icon on the righthand side.
 
 ### Episode List
 <img width="1277" alt="episodelist" src="https://user-images.githubusercontent.com/2096314/115931494-0c877c00-a440-11eb-8b5a-2249891836af.png">
@@ -30,7 +33,7 @@ The user can view the episode description by clicking on the expand button on th
 * Skip forward/ back 10 seconds button
 * Volume controls
 * Wider variety of podcasts
-
+* Enhanced search functionality
 * Ability to input custom podcast feed
 * User accounts + ability to save favorite podcasts to account
 * Dark theme and other skins
