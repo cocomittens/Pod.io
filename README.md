@@ -13,20 +13,24 @@ http://pod-io.herokuapp.com
 ### Podcast List
 <img width="1276" alt="podcastlist" src="https://user-images.githubusercontent.com/2096314/115931420-e95ccc80-a43f-11eb-85b1-37b0005f54f8.png">
 When first viewing the app, the user will be presented with a list of all available podcasts they can listen to.
+
 <img width="1268" alt="podcastplaying" src="https://user-images.githubusercontent.com/2096314/115932612-21fda580-a442-11eb-8b07-dfc29a54ea04.png">
 An episode will continue to play (or be paused) even after navigating back to the podcast list.
 
 ### Search
 <img width="1279" alt="search" src="https://user-images.githubusercontent.com/2096314/115932290-81a78100-a441-11eb-9e23-f34639665899.png">
 The user can search for a podcast.
+
 <img width="1277" alt="searchresults" src="https://user-images.githubusercontent.com/2096314/115932383-b0255c00-a441-11eb-8e99-c49616659da5.png">
 After the user selects a podcast, the podcast will appear. The user can clear the selection and display all available podcasts by clicking the "x" icon on the righthand side.
 
 ### Episode List
 <img width="1277" alt="episodelist" src="https://user-images.githubusercontent.com/2096314/115931494-0c877c00-a440-11eb-8b5a-2249891836af.png">
 Upon clicking on a podcast, the user will be presented with a list of available episodes.
+
 <img width="1268" alt="playing" src="https://user-images.githubusercontent.com/2096314/115932035-034adf00-a441-11eb-8f02-6ef8745d1bfd.png">
-When an episode is selected, it will begin playing and the currently playing episode will be highlighted in the list. The user can pause playback with the pause button on the audio controls
+When an episode is selected, it will begin playing and the currently playing episode will be highlighted in the list. The user can pause playback with the pause button on the audio controls.
+
 <img width="1277" alt="expanded" src="https://user-images.githubusercontent.com/2096314/115932507-ef53ad00-a441-11eb-970d-ab469f663801.png">
 The user can view the episode description by clicking on the expand button on the righthand side of the episode. 
 
