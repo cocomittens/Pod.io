@@ -29,18 +29,12 @@ const PodcastPlayer = (props) => {
   const { episode } = props;
   const classes = useStyles();
 
-  const [isPlaying, setIsPlaying] = useState(episode !== null);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [player, setPlayer] = useState(null);
-
-  useEffect(() => {
-    setIsPlaying(episode !== null);
-  }, [episode, setIsPlaying]);
 
   const handlePlayButtonClick = () => {
     setIsPlaying(!isPlaying);
   };
-
-  const getAudio = episode ? [episode.attachments[0].url] : [""];
 
   const icon = isPlaying ? (
     <PauseCircleFilledIcon className={classes.playPause} />
@@ -59,7 +53,7 @@ const PodcastPlayer = (props) => {
         {icon}
       </Grid>
       <ReactHowler
-        src={getAudio}
+        src={[episode.attachments[0].url]}
         playing={isPlaying}
         ref={(ref) => setPlayer(ref)}
       />

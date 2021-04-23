@@ -155,7 +155,6 @@ const PodcastList = (props) => {
             );
           })}
       </Grid>
-      <PodcastPlayer />
     </div>
   );
 };

@@ -15,6 +15,9 @@ const useStyles = makeStyles({
     minHeight: "90vh",
     overflow: "hidden",
   },
+  playing: {
+    paddingBottom: "10vh",
+  },
 });
 const ListDisplay = () => {
   const classes = useStyles();
@@ -22,19 +25,28 @@ const ListDisplay = () => {
   const currentEpisode = useSelector((state) => state.currentEpisode);
   const currentPodcast = useSelector((state) => state.currentPodcast);
   const displayType = useSelector((state) => state.displayType);
-  console.log(currentPodcast);
+
   const renderDisplay = () => {
     if (displayType === EPISODES)
       return <EpisodeList podcast={currentPodcast} episodes={episodes} />;
     return <PodcastList />;
   };
+  const renderPlayer = () => {
+    return currentEpisode !== null ? (
+      <PodcastPlayer episode={currentEpisode} />
+    ) : null;
+  };
   return (
     <Grid container className={classes.background}>
-      <Grid item xs={12}>
+      <Grid
+        item
+        xs={12}
+        className={currentEpisode !== null ? classes.playing : null}
+      >
         {renderDisplay()}
       </Grid>
       <Grid item xs={12}>
-        <PodcastPlayer episode={currentEpisode} />
+        {renderPlayer()}
       </Grid>
     </Grid>
   );

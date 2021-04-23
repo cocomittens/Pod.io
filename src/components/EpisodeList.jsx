@@ -60,7 +60,6 @@ const useStyles = makeStyles({
   },
   body: {
     background: "linear-gradient(45deg, #edeef7 30%, #fff 90%)",
-    paddingBottom: "10vh",
   },
   img: {
     marginTop: "2vh",
