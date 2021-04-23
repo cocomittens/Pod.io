@@ -5,13 +5,12 @@ import {
   ListItemText,
   Typography,
 } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
 
 import React from "react";
+import { useDispatch } from "react-redux";
 
-const EpisodeList = () => {
-  const episodes = useSelector((state) => state.episodeList);
-  console.log(episodes);
+const EpisodeList = (props) => {
+  const { episodes } = props;
   return (
     <List>
       {episodes.map((episode) => (

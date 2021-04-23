@@ -4,14 +4,12 @@ import { Route, Switch } from "react-router-dom";
 
 import EpisodeDetails from "./components/EpisodeDetail";
 import EpisodeList from "./components/EpisodeList";
-import PodcastList from "./components/PodcastList";
+import ListDisplay from "./components/ListDisplay";
 
 const App = () => {
   return (
     <Switch>
-      <Route path="/play" component={EpisodeDetails} />
-      <Route path="/episodes" component={EpisodeList} />
-      <Route exact path="/" component={PodcastList} />
+      <Route path="/" component={ListDisplay} />
     </Switch>
   );
 };

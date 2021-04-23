@@ -6,6 +6,7 @@ import PodcastPlayer from "./PodcastPlayer";
 import { fetchPodcast } from "../utils/utils";
 import { makeStyles } from "@material-ui/core/styles";
 import { setEpisodeList } from "../actions/episodeList";
+import { setEpisodes } from "../actions/displayType";
 import urls from "../utils/urls";
 
 const useStyles = makeStyles({
@@ -40,7 +41,7 @@ const PodcastList = (props) => {
 
   const handleClick = (podcast) => {
     dispatch(setEpisodeList(podcast.items));
-    props.history.push("/episodes");
+    dispatch(setEpisodes());
   };
 
   return (
