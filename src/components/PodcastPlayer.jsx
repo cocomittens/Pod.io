@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
@@ -28,6 +28,10 @@ const PodcastPlayer = (props) => {
   const classes = useStyles();
 
   const [isPlaying, setIsPlaying] = useState(episode !== null);
+
+  useEffect(() => {
+    if (episode) setIsPlaying(true);
+  }, [episode, setIsPlaying]);
 
   const handlePlayButtonClick = () => {
     setIsPlaying(!isPlaying);
