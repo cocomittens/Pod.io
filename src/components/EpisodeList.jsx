@@ -15,6 +15,7 @@ import {
 
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { setCurrentEpisode } from "../actions/currentEpisode";
 import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
@@ -24,7 +25,10 @@ const useStyles = makeStyles({
 });
 const EpisodeList = (props) => {
   const classes = useStyles();
-
+  const dispatch = useDispatch();
+  const handleClick = (episode) => {
+    dispatch(setCurrentEpisode(episode));
+  };
   const { episodes } = props;
   return (
     <TableContainer component={Paper}>
@@ -36,7 +40,7 @@ const EpisodeList = (props) => {
         </TableHead>
         <TableBody>
           {episodes.map((episode, index) => (
-            <TableRow key={index}>
+            <TableRow onClick={() => handleClick(episode)} key={index}>
               <TableCell component="th" scope="row">
                 {episode.title}
               </TableCell>

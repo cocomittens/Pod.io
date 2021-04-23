@@ -1,8 +1,9 @@
 import { Grid, Typography } from "@material-ui/core";
-import { Howl, Howler } from "howler";
+import React, { useEffect, useState } from "react";
 
+import PauseCircleFilledIcon from "@material-ui/icons/PauseCircleFilled";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
-import React from "react";
+import ReactHowler from "react-howler";
 import { makeStyles } from "@material-ui/core/styles";
 import { setEpisodeList } from "../actions/displayType";
 
@@ -22,7 +23,23 @@ const useStyles = makeStyles({
 });
 
 const PodcastPlayer = (props) => {
+  const { episode } = props;
+
   const classes = useStyles();
+
+  const [isPlaying, setIsPlaying] = useState(episode !== null);
+
+  const handlePlayButtonClick = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const getAudio = episode ? [episode.attachments[0].url] : [""];
+
+  const icon = isPlaying ? (
+    <PauseCircleFilledIcon className={classes.playPause} />
+  ) : (
+    <PlayCircleFilledWhiteIcon className={classes.playPause} />
+  );
 
   return (
     <Grid
@@ -31,9 +48,10 @@ const PodcastPlayer = (props) => {
       justify="center"
       alignContent="center"
     >
-      <Grid item>
-        <PlayCircleFilledWhiteIcon className={classes.playPause} />
+      <Grid item onClick={handlePlayButtonClick}>
+        {icon}
       </Grid>
+      <ReactHowler src={getAudio} playing={isPlaying} />
     </Grid>
   );
 };

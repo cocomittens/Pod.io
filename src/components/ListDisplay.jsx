@@ -17,17 +17,12 @@ const useStyles = makeStyles({
 const ListDisplay = () => {
   const classes = useStyles();
   const episodes = useSelector((state) => state.episodeList);
+  const currentEpisode = useSelector((state) => state.currentEpisode);
   const displayType = useSelector((state) => state.displayType);
 
   const renderDisplay = () => {
-    switch (displayType) {
-      case PODCASTS:
-        return <PodcastList />;
-      case EPISODES:
-        return <EpisodeList episodes={episodes} />;
-      default:
-        return <PodcastList />;
-    }
+    if (displayType === EPISODES) return <EpisodeList episodes={episodes} />;
+    return <PodcastList />;
   };
   return (
     <Grid container>
@@ -35,7 +30,7 @@ const ListDisplay = () => {
         {renderDisplay()}
       </Grid>
       <Grid item xs={12}>
-        <PodcastPlayer />
+        <PodcastPlayer episode={currentEpisode} />
       </Grid>
     </Grid>
   );

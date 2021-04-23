@@ -19,8 +19,10 @@ const useStyles = makeStyles({
     margin: "0",
     padding: "0 1vw",
   },
-  background: {
-    backgroundColor: "#edeef7",
+  header: {
+    fontFamily: "raleway",
+    fontWeight: "bold",
+    color: "#7868e6",
   },
 });
 const PodcastList = (props) => {
@@ -51,7 +53,9 @@ const PodcastList = (props) => {
     <div className="App">
       <Grid container className={classes.podcasts} spacing={2} justify="center">
         <Grid item xs={12}>
-          <Typography variant="h1">Pod.io</Typography>
+          <Typography className={classes.header} variant="h1">
+            Pod.io
+          </Typography>
         </Grid>
         {data.map((podcast, index) => {
           return (
@@ -74,7 +78,7 @@ const PodcastList = (props) => {
                 />
               </Grid>
               <Grid item>
-                <Typography variant="h4">{podcast.title}</Typography>
+                <Typography variant="h5">{podcast.title}</Typography>
               </Grid>
             </Grid>
           );
