@@ -14,6 +14,10 @@ const useStyles = makeStyles({
   img: {
     width: "100%",
     borderRadius: "5px",
+    "&:hover": {
+      cursor: "pointer",
+      opacity: ".8",
+    },
   },
   podcasts: {
     width: "100%",
@@ -21,10 +25,14 @@ const useStyles = makeStyles({
     padding: "0 1vw",
     paddingBottom: "10vh",
   },
+
   header: {
     fontFamily: "raleway",
     fontWeight: "bold",
     color: "#7868e6",
+    "&:hover": {
+      cursor: "default",
+    },
   },
 });
 const PodcastList = (props) => {

@@ -19,19 +19,23 @@ const useStyles = makeStyles({
     fontSize: "60px",
     color: "#edeef7",
     padding: "2vh 0",
+    "&:hover": {
+      cursor: "pointer",
+      opacity: ".8",
+    },
   },
 });
 
 const PodcastPlayer = (props) => {
   const { episode } = props;
-
+  console.log(episode);
   const classes = useStyles();
 
   const [isPlaying, setIsPlaying] = useState(episode !== null);
   const [player, setPlayer] = useState(null);
 
   useEffect(() => {
-    if (episode) setIsPlaying(true);
+    setIsPlaying(episode !== null);
   }, [episode, setIsPlaying]);
 
   const handlePlayButtonClick = () => {
