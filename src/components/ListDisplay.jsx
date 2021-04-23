@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 const useStyles = makeStyles({
   background: {
     background: "linear-gradient(45deg, #edeef7 30%, #fff 90%)",
+    minHeight: "90vh",
+    overflow: "hidden",
   },
 });
 const ListDisplay = () => {

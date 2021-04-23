@@ -46,14 +46,16 @@ const useStyles = makeStyles({
       cursor: "default",
     },
   },
+  title: {
+    fontWeight: "400",
+    color: "#111",
+  },
 });
 const PodcastList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const [search, setSearch] = useState(null);
-  const [inputValue, setInputValue] = React.useState("");
-
   const getData = useCallback((url) => {
     fetchPodcast(url).then(function (response) {
       setData((data) => [...data, response]);
@@ -85,11 +87,8 @@ const PodcastList = (props) => {
         id="combo-box-demo"
         options={data.map((data) => data.title)}
         onChange={handleSelection}
-        inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
-          setInputValue(newInputValue);
-        }}
         value={search}
+        autoSelect
         renderInput={(params) => (
           <TextField
             className={classes.search}
@@ -148,7 +147,9 @@ const PodcastList = (props) => {
                   />
                 </Grid>
                 <Grid item>
-                  <Typography variant="h6">{podcast.title}</Typography>
+                  <Typography variant="h6" className={classes.title}>
+                    {podcast.title}
+                  </Typography>
                 </Grid>
               </Grid>
             );
