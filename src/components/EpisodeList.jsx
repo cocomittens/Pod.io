@@ -113,7 +113,7 @@ const EpisodeList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(-1);
-  const [open, setOpen] = useState([]);
+  const [open, setOpen] = useState(-1);
 
   const handleClick = (episode, index) => {
     dispatch(setCurrentEpisode(episode));
