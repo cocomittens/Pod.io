@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { Route, Switch } from "react-router-dom";
+
+import EpisodeDetails from "./components/EpisodeDetail";
+import EpisodeList from "./components/EpisodeList";
+import PodcastList from "./components/PodcastList";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route path="/play" component={EpisodeDetails} />
+      <Route path="/episodes" component={EpisodeList} />
+      <Route exact path="/" component={PodcastList} />
+    </Switch>
   );
-}
+};
 
 export default App;
