@@ -6,6 +6,7 @@ import { Autocomplete } from "@material-ui/lab";
 import PodcastPlayer from "./PodcastPlayer";
 import { fetchPodcast } from "../utils/utils";
 import { makeStyles } from "@material-ui/core/styles";
+import { setCurrentPodcast } from "../actions/currentPodcast";
 import { setEpisodeList } from "../actions/episodeList";
 import { setEpisodes } from "../actions/displayType";
 import urls from "../utils/urls";
@@ -59,6 +60,7 @@ const PodcastList = (props) => {
 
   const handleClick = (podcast) => {
     dispatch(setEpisodeList(podcast.items));
+    dispatch(setCurrentPodcast(podcast));
     dispatch(setEpisodes());
   };
 

@@ -18,10 +18,12 @@ const ListDisplay = () => {
   const classes = useStyles();
   const episodes = useSelector((state) => state.episodeList);
   const currentEpisode = useSelector((state) => state.currentEpisode);
+  const currentPodcast = useSelector((state) => state.currentPodcast);
   const displayType = useSelector((state) => state.displayType);
-
+  console.log(currentPodcast);
   const renderDisplay = () => {
-    if (displayType === EPISODES) return <EpisodeList episodes={episodes} />;
+    if (displayType === EPISODES)
+      return <EpisodeList podcast={currentPodcast} episodes={episodes} />;
     return <PodcastList />;
   };
   return (
