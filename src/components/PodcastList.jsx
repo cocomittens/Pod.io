@@ -19,6 +19,8 @@ const useStyles = makeStyles({
       cursor: "pointer",
       opacity: ".8",
     },
+    boxShadow:
+      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   },
   podcasts: {
     width: "100%",
@@ -103,7 +105,7 @@ const PodcastList = (props) => {
 
   return (
     <div className="App">
-      <Grid container className={classes.podcasts} spacing={2} justify="center">
+      <Grid container className={classes.podcasts} spacing={4} justify="center">
         <Grid item xs={12}>
           <Typography className={classes.header} variant="h1">
             Pod.io

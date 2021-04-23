@@ -28,28 +28,29 @@ const useStyles = makeStyles({
       width: "0.4em",
     },
     "*::-webkit-scrollbar-track": {
-      "-webkit-box-shadow": "inset 0 0 6px rgba(0,0,0,0.00)",
+      "-webkit-box-shadow":
+        "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
     },
     "*::-webkit-scrollbar-thumb": {
-      backgroundColor: "rgba(0,0,0,.1)",
-      outline: "1px solid slategrey",
+      backgroundColor: "#b8b5ff",
+
       borderRadius: "5px",
     },
   },
   unselected: {
     "&:hover": {
       cursor: "pointer",
-      backgroundColor: "#e4fbff",
+      backgroundColor: "#b8b5ff",
     },
   },
   selected: {
     cursor: "pointer",
-    backgroundColor: "#e4fbff",
+    backgroundColor: "#b8b5ff",
   },
   back: {
     "&:hover": {
       cursor: "pointer",
-      opacity: ".8",
+      color: "#b8b5ff",
     },
     fontSize: "60px",
     position: "fixed",
@@ -63,6 +64,8 @@ const useStyles = makeStyles({
   img: {
     width: "100%",
     borderRadius: "5px",
+    boxShadow:
+      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   },
   podcastInfo: { paddingTop: "1vh" },
   description: {
@@ -73,27 +76,32 @@ const useStyles = makeStyles({
   header: {
     fontFamily: "raleway",
     fontWeight: "bold",
-    color: "#111",
+    color: "#7868e6",
     "&:hover": {
       cursor: "default",
     },
   },
   expandButton: {
     color: "#7868e6",
+    marginRight: "1vw",
   },
   open: {
-    border: "1px solid #edeef7",
+    borderBottom: "1px solid #111",
   },
   closed: {
     padding: 0,
     border: "none",
+  },
+
+  tableCell: {
+    borderBottom: "1px solid #111",
   },
 });
 const EpisodeList = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(-1);
-  const [open, setOpen] = useState(-1);
+  const [open, setOpen] = useState([]);
 
   const handleClick = (episode, index) => {
     dispatch(setCurrentEpisode(episode));
@@ -128,19 +136,31 @@ const EpisodeList = (props) => {
         </Grid>
       </Grid>
 
-      <Table>
+      <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell variant="head" align="center">
+            <TableCell
+              className={classes.tableCell}
+              variant="head"
+              align="center"
+            >
               <Typography variant="h6">Title</Typography>
             </TableCell>
-            <TableCell variant="head" align="center">
+            <TableCell
+              className={classes.tableCell}
+              variant="head"
+              align="center"
+            >
               <Typography variant="h6">Length</Typography>
             </TableCell>
-            <TableCell variant="head" align="center">
+            <TableCell
+              className={classes.tableCell}
+              variant="head"
+              align="center"
+            >
               <Typography variant="h6">Date</Typography>
             </TableCell>
-            <TableCell />
+            <TableCell className={classes.tableCell} />
           </TableRow>
         </TableHead>
         <TableBody className={classes.episodes}>
@@ -153,26 +173,35 @@ const EpisodeList = (props) => {
                 onClick={() => handleClick(episode, index)}
                 key={index}
               >
-                <TableCell align="center" size="small">
+                <TableCell
+                  className={classes.tableCell}
+                  align="center"
+                  size="small"
+                >
                   <Typography variant="body1">{episode.title}</Typography>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell className={classes.tableCell} align="center">
                   <Typography variant="body1">
-                    {episode.attachments[0].duration_in_seconds}
+                    {`${Math.floor(
+                      episode.attachments[0].duration_in_seconds / 60
+                    )} min`}
                   </Typography>
                 </TableCell>
-                <TableCell align="center">
+                <TableCell className={classes.tableCell} align="center">
                   <Typography variant="body1">
                     {new Date(episode.date_published).getMonth()}-
                     {new Date(episode.date_published).getDate()}-
                     {new Date(episode.date_published).getFullYear()}
                   </Typography>
                 </TableCell>
-                <TableCell align="right">
+                <TableCell className={classes.tableCell} align="right">
                   <IconButton
                     aria-label="expand row"
                     size="small"
-                    onClick={() => setOpen(open >= 0 ? -1 : index)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setOpen(open >= 0 ? -1 : index);
+                    }}
                     className={classes.expandButton}
                   >
                     {open === index ? (
